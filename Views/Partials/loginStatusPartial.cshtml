@@ -20,14 +20,14 @@
 
         @using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout", new { RedirectUrl = logoutModel.RedirectUrl }))
         {
-            <button type="submit" class="btn btn-secondary">Log out</button>
+            <button type="submit" class="btn btn-light border">Log out</button>
         }
 
     </div>
 }
 @if(!isLoggedIn)
 {
-    <a class="btn btn-info" href="@Umbraco.Content("dbdef2d0-13b3-443e-8da0-2b2a1e146883").Url()">Log In</a>
-    <a class="btn btn-secondary" role="button" href="@Umbraco.Content("0e588bdd-c57f-4c5b-af7e-ce3c67886698").Url()">Sign Up</a>
+    <a class="btn btn-light border" href="@Umbraco.Content("dbdef2d0-13b3-443e-8da0-2b2a1e146883").Url()">Log In</a>
+    <a class="btn btn-light border" role="button" href="@Umbraco.Content("0e588bdd-c57f-4c5b-af7e-ce3c67886698").Url()">Sign Up</a>
 
 }
