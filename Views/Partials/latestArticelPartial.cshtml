@@ -1,0 +1,34 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+	var latest10Articles = Umbraco.Content(Guid.Parse("27bfb04a-6d60-4d2f-b747-60be0e13da62"))
+    .Descendants()
+    .Where(x => x.IsVisible() && (x.IsDocumentType("Article")))
+    .OrderByDescending(x => x.CreateDate).Take(5);
+}
+<h2>Latest Articles</h2>
+	@foreach (var item in latest10Articles)
+	{
+	 <a class="text-decoration-none text-secondary" href="@item.Url()">
+	     <div class="d-flex border mb-5  p-5 bg-white">
+	         @{
+	          var image = item.Value<IPublishedContent>("teaserImage");
+	        }
+	        <div class="align-items-center " style="max-width: 45rem;">
+	            <img class="img-thumbnail" src="@image.Url()"/>
+	        </div>
+	        <div class="container bg-white m-3 text-decoration-none">
+	            <div class="align-items-center">
+	              <h2>@item.Value("teaserTitle")</h2>
+	            </div>
+	            
+	            
+	        </div>
+	        
+	   </div>
+	     
+	 </a> 
+	 
+	    
+		
+	}

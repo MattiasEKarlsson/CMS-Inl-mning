@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<h3>News for you</h3>
+            @{
+                      var randomArticles = Umbraco.Content(Guid.Parse("27bfb04a-6d60-4d2f-b747-60be0e13da62"))
+                     .Descendants()
+                     .Where(x => x.IsVisible() && (x.IsDocumentType("Article")))
+                     .OrderBy(t=> Guid.NewGuid()).Take(3);
+            }
+            
+            
+            
+            @foreach (var item in randomArticles)
+	       {
+	       var image = item.Value<IPublishedContent>("teaserImage");
+	       
+	       <div class="card mb-3 border" style="width: 18rem;">
+              <img class="card-img-top" src="@image.Url()" alt="Card image cap">
+              <div class="card-body">
+                 <h5 class="card-title">@item.Value("teaserTitle")</h5>
+                 
+                <a href="@item.Url()" class="btn btn-primary">Read Article</a>
+              </div>
+           </div>
+           }

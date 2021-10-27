@@ -1,0 +1,39 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Gossips>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+@{
+	var selection = Umbraco.Content(Guid.Parse("5d30d802-31fe-4309-b596-310007fd01f4"))
+    .Children()
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
+}
+<h2>Latest Gossips</h2>
+	@foreach (var item in selection)
+	{
+	 <a class="text-decoration-none text-secondary" href="@item.Url()">
+	     <div class="d-flex border mb-5  p-5 bg-white">
+	         @{
+	          var image = item.Value<IPublishedContent>("teaserImage");
+	        }
+	        <div class="align-items-center " style="max-width: 45rem;">
+	            <img class="img-thumbnail" src="@image.Url()"/>
+	        </div>
+	        <div class="container bg-white m-3 text-decoration-none">
+	            <div class="align-items-center">
+	              <h2>@item.Value("teaserTitle")</h2>
+	            </div>
+	            
+	            
+	        </div>
+	        
+	   </div>
+	     
+	 </a> 
+	    
+		
+	}
+

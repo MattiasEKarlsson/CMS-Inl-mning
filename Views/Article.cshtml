@@ -1,0 +1,22 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Article>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+    
+<div class="container">
+    <div class="d-flex justify-content-center container border-bottom mb-5">
+        <h2>@Model.Value("teaserTitle")</h2>
+    </div>
+  <div class="d-flex justify-content-center">
+     <img class="rounded-3" src="@Model.TeaserImage.Url()"/>
+  </div>
+  <div class="container  mt-5">
+    <p>@Model.Value("articleContent")</p> 
+  </div>
+    
+</div>
+
+

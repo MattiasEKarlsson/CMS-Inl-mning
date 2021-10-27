@@ -1,0 +1,53 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.OurCrew>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+@{
+	var members = Umbraco.Content(Guid.Parse("237ca6f5-d836-4e9d-9a4b-f7ae9099e3a6"))
+    .Children()
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
+}
+
+	
+<!-- Start: Team Boxed -->
+<section class="team-boxed">
+    <div class="container">
+        <!-- Start: Intro -->
+        <div>
+            <h2 class="text-center">
+                Our Team 
+            </h2>
+            
+        </div>
+        
+        <div class="row">
+           
+           
+            @foreach (var member in members)
+            {
+                var image = member.Value<IPublishedContent>("crewImage");
+                <div class="card m-2" style="width: 17rem;">
+                    <img class="card-img-top border border-5" src="@image.Url()" >
+                    <div class="card-body">
+                       <h3 class="card-title">@member.Value("crewName")</h3>
+                       <h5 class="card-text">@member.Value("crewTitle")</h5>
+                       <p class="card-text">@member.Value("crewDescription")</p>
+                       
+                    </div>
+                </div>
+              
+                        
+                    
+                
+            }
+            
+            
+        </div>
+        <!-- End: People -->
+    </div>
+</section>
+<!-- End: Team Boxed -->
