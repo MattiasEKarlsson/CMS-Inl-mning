@@ -14,12 +14,12 @@
 	       {
 	       var image = item.Value<IPublishedContent>("teaserImage");
 	       
-	       <div class="card mb-3 border" style="width: 18rem;">
+	       <div class="card mb-3 border shadow" style="width: 18rem;">
               <img class="card-img-top" src="@image.Url()" alt="Card image cap">
               <div class="card-body">
                  <h5 class="card-title">@item.Value("teaserTitle")</h5>
                  
-                <a href="@item.Url()" class="btn btn-outline-danger">Read Article</a>
+                <a href="@item.Url()" class="btn btn-outline-danger shadow-sm">Read Article</a>
               </div>
            </div>
            }

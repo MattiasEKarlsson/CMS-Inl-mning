@@ -10,7 +10,7 @@
 	@foreach (var item in latest10Articles)
 	{
 	 <a class="text-decoration-none text-secondary" href="@item.Url()">
-	     <div class="d-flex border mb-5  p-5 bg-white">
+	     <div class="d-flex border mb-5 p-3 bg-white shadow">
 	         @{
 	          var image = item.Value<IPublishedContent>("teaserImage");
 	        }

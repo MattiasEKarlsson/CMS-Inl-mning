@@ -30,7 +30,7 @@
             @foreach (var member in members)
             {
                 var image = member.Value<IPublishedContent>("crewImage");
-                <div class="card m-2" style="width: 17rem;">
+                <div class="card m-2 shadow" style="width: 17rem;">
                     <img class="card-img-top border border-5" src="@image.Url()" >
                     <div class="card-body">
                        <h3 class="card-title">@member.Value("crewName")</h3>
